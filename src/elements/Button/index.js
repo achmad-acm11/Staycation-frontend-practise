@@ -10,7 +10,7 @@ export default function Button(props) {
   if (props.isLight) className.push("btn-light");
   if (props.isLarge) className.push("btn-lg");
   if (props.isSmall) className.push("btn-sm");
-  if (props.hasShadow) className.push("btn-shadow");
+  if (props.hasShadow) className.push("shadow");
 
   // Add Function EventListener onClick
   const onClick = () => {
@@ -36,7 +36,7 @@ export default function Button(props) {
 
   // Set Button Type Link
   if (props.type === "link") {
-      // button redirect to link external
+    // button redirect to link external
     if (props.isExternal) {
       return (
         <a
@@ -44,13 +44,14 @@ export default function Button(props) {
           className={className.join(" ")}
           style={props.style}
           target={props.target === "_blank" ? "_blank" : undefined}
-          rel={props.target === "_blank" ? "noopener noreferrer" : undefined}
+          // rel={props.target === "_blank" ? "noopener noreferrer" : undefined}
+          rel="noreferrer"
         >
           {props.children}
         </a>
       );
     } else {
-        // button redirect to link app
+      // button redirect to link app
       return (
         <Link
           to={props.href}
@@ -87,6 +88,6 @@ Button.propTypes = {
   isLoading: propTypes.bool,
   isSmall: propTypes.bool,
   isLarge: propTypes.bool,
-//   isBlock: propTypes.bool,
+  //   isBlock: propTypes.bool,
   hasShadow: propTypes.bool,
 };

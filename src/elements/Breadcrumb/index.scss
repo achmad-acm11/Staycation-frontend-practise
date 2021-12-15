@@ -1,0 +1,10 @@
+.breadcrumb {
+    .breadcrumb-item {
+        a {
+            color: #ced4da;
+        }
+        &.active {
+            color: unset;
+        }
+    }
+}

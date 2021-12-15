@@ -1,10 +1,19 @@
 import "assets/scss/style.scss";
-import Button from "elements/Button";
+import Checkout from "pages/Checkout";
+import DetailPage from "pages/DetailPage";
+import LandingPage from "pages/LandingPage";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 function App() {
   return (
     <div className="App">
-      <Button className="btn btn-primary">Button</Button>
+      <Router>
+        <Switch>
+          <Route exact path="/" component={LandingPage} />
+          <Route exact path="/properties" component={DetailPage} />
+          <Route path="/checkout" component={Checkout} />
+        </Switch>
+      </Router>
     </div>
   );
 }
