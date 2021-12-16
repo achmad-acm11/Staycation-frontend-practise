@@ -3,11 +3,15 @@ import propTypes from "prop-types";
 import "./index.scss";
 
 export default function Star(props) {
+
+  // Calculate modulus value
   const decimals = Number(props.value) % 1;
 
+  // Data Component star
   const star = [];
   let leftPos = 0;
 
+  // Create Star Color
   for (let index = 0; index < 5 && index < props.value - decimals; index++) {
     leftPos += props.width;
     star.push(
@@ -38,6 +42,7 @@ export default function Star(props) {
     );
   }
 
+  // Create Star Placeholder All 
   const starPlaceholder = [];
   for (let index = 0; index < 5; index++) {
     starPlaceholder.push(

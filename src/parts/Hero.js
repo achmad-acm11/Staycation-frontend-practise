@@ -7,7 +7,14 @@ import IconTreasure from "assets/images/icon/icon-treasure.svg";
 import IconCities from "assets/images/icon/icon-cities.svg";
 import FormatNumber from "utils/formatNumber";
 
-export default function Hero() {
+export default function Hero(props) {
+  function showMostPicked() {
+    window.scrollTo({
+      top: props.refMostPicked.current.offsetTop - 30,
+      behavior: "smooth",
+    });
+  }
+  
   return (
     <section className="hero-section container pt-4">
       <div className="row align-items-center justify-content-between">
@@ -17,20 +24,25 @@ export default function Hero() {
             Start Next Vacation
           </h1>
           <p
-            className="mb-4 fw-light text-gray-500 w-75"
+            className="mb-5 fw-light text-gray-500 w-75"
             style={{ lineHeight: "170%" }}
           >
             We provide what you need to enjoy your holiday with family. Time to
             make another memorable moments.
           </p>
-          <Button className="btn px-5" hasShadow isPrimary>
+          <Button
+            className="btn px-5"
+            hasShadow
+            isPrimary
+            onClick={showMostPicked}
+          >
             Show Me Now
           </Button>
           <div className="row" style={{ marginTop: "80px" }}>
             <div className="col-auto" style={{ marginRight: "50px" }}>
               <img width={32} height={32} src={IconTravel} alt="Icon Travel" />
               <h6 className="mt-3">
-                {FormatNumber(80409)} &nbsp;
+                {FormatNumber(props.data.hero.travelers)} &nbsp;
                 <span className="text-gray-500 fw-light">travelers</span>
               </h6>
             </div>
@@ -42,14 +54,14 @@ export default function Hero() {
                 alt="Icon Treasure"
               />
               <h6 className="mt-3">
-                {FormatNumber(862)} &nbsp;
+                {FormatNumber(props.data.hero.treasures)} &nbsp;
                 <span className="text-gray-500 fw-light">treasures</span>
               </h6>
             </div>
             <div className="col-auto" style={{ marginRight: "50px" }}>
               <img src={IconCities} alt="Icon Cities" width={32} height={32} />
               <h6 className="mt-3">
-                {FormatNumber(1492)} &nbsp;
+                {FormatNumber(props.data.hero.cities)} &nbsp;
                 <span className="text-gray-500 fw-light">cities</span>
               </h6>
             </div>
