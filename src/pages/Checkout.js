@@ -1,14 +1,47 @@
 // import Button from "elements/Button";
 import Button from "elements/Button";
-import Meta from "elements/Stepper/Meta";
-import Number from "elements/Stepper/Number";
+// import Meta from "elements/Stepper/Meta";
+// import Number from "elements/Stepper/Number";
+import BookingInformation from "parts/Checkout/BookingInformation";
 import Complete from "parts/Checkout/Complete";
-// import BookingInformation from "parts/Checkout/BookingInformation";
-// import Payment from "parts/Checkout/Payment";
+import Payment from "parts/Checkout/Payment";
 import Header from "parts/Header";
 import React, { Component } from "react";
+import Stepper, {
+  Numbering,
+  Meta,
+  Controller,
+  MainContent,
+} from "elements/Stepper/index";
+
+import detailsData from "json/itemDetails.json";
 
 export default class Checkout extends Component {
+  state = {
+    data: {
+      firstName: "",
+      lastName: "",
+      email: "",
+      phone: "",
+      proofPayment: "",
+      bankName: "",
+      bankHolder: "",
+    },
+  };
+
+  onChange = (event) => {
+    this.setState({
+      data: {
+        ...this.state.data,
+        [event.target.name]: [event.target.value],
+      },
+    });
+  };
+
+  componentDidMount() {
+    window.scrollTo(0, 0);
+    document.title = "Staycation | Checkout";
+  }
   render() {
     // return (
     //   <div className="contianer">
@@ -34,28 +67,125 @@ export default class Checkout extends Component {
     //     </div>
     //   </div>
     // );
+    const { data } = this.state;
+    // const { checkout } = this.props;
+    const checkout = {
+      duration: 3,
+    };
+
+    const steps = {
+      bookingInformation: {
+        title: "Booking Information",
+        description: "Please fill up the blank fields below",
+        content: (
+          <BookingInformation
+            data={data}
+            checkout={checkout}
+            ItemDetails={detailsData}
+            onChange={this.onChange}
+          />
+        ),
+      },
+      payment: {
+        title: "Payment",
+        description: "Kindly follow the instruction below",
+        content: (
+          <Payment
+            data={data}
+            checkout={checkout}
+            ItemDetails={detailsData}
+            onChange={this.onChange}
+          />
+        ),
+      },
+      complete: {
+        title: "Complete Checkout",
+        description: null,
+        content: <Complete />,
+      },
+    };
     return (
       <>
         <Header {...this.props} isCentered />
-        <Number style={{ marginBottom: 50 }} />
-        <Meta />
-        {/* <BookingInformation /> */}
-        {/* <Payment /> */}
-        <Complete />
-        <section className="container mt-5">
-          <div className="row justify-content-center">
-            <div className="col-3">
-              <div className="d-grid gap-2">
-                <Button className="btn mb-3" type="button" href="" isPrimary>
-                  Continue to Book
-                </Button>
-                <Button className="btn" type="link" href="" isLight>
-                  Cancel
-                </Button>
-              </div>
-            </div>
-          </div>
-        </section>
+        <Stepper steps={steps} initialStep="bookingInformation">
+          {(prevStep, nextStep, CurrentStep, steps) => {
+            return (
+              <>
+                <Numbering
+                  data={steps}
+                  currentStep={CurrentStep}
+                  style={{ marginBottom: 50 }}
+                />
+                <Meta data={steps} current={CurrentStep} />
+                <MainContent data={steps} current={CurrentStep} />
+                {CurrentStep === "bookingInformation" && (
+                  <Controller>
+                    {data.firstName !== "" &&
+                      data.lastName !== "" &&
+                      data.email !== "" &&
+                      data.phone !== "" && (
+                        <Button
+                          className="btn mb-3"
+                          type="button"
+                          isPrimary
+                          hasShadow
+                          onClick={nextStep}
+                        >
+                          Continue to Book
+                        </Button>
+                      )}
+                    <Button
+                      className="btn"
+                      type="link"
+                      href={`properties/1`}
+                      isLight
+                    >
+                      Cancel
+                    </Button>
+                  </Controller>
+                )}
+                {CurrentStep === "payment" && (
+                  <Controller>
+                    {data.proofPayment !== "" &&
+                      data.bankHolder !== "" &&
+                      data.bankName !== "" && (
+                        <Button
+                          className="btn mb-3"
+                          type="button"
+                          isPrimary
+                          hasShadow
+                          onClick={nextStep}
+                        >
+                          Continue to Book
+                        </Button>
+                      )}
+                    <Button
+                      className="btn"
+                      type="button"
+                      onClick={prevStep}
+                      isLight
+                    >
+                      Cancel
+                    </Button>
+                  </Controller>
+                )}
+                {CurrentStep === "complete" && (
+                  <Controller>
+                    <Button
+                      className="btn"
+                      type="link"
+                      onClick={prevStep}
+                      isPrimary
+                      href=""
+                    >
+                      Back to Home
+                    </Button>
+                  </Controller>
+                )}
+              </>
+            );
+          }}
+        </Stepper>
       </>
     );
   }
