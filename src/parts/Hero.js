@@ -42,7 +42,7 @@ export default function Hero(props) {
             <div className="col-auto" style={{ marginRight: "50px" }}>
               <img width={32} height={32} src={IconTravel} alt="Icon Travel" />
               <h6 className="mt-3">
-                {FormatNumber(props.data.hero.travelers)} &nbsp;
+                {FormatNumber(props.data.travelers)} &nbsp;
                 <span className="text-gray-500 fw-light">travelers</span>
               </h6>
             </div>
@@ -54,14 +54,14 @@ export default function Hero(props) {
                 alt="Icon Treasure"
               />
               <h6 className="mt-3">
-                {FormatNumber(props.data.hero.treasures)} &nbsp;
+                {FormatNumber(props.data.treasures)} &nbsp;
                 <span className="text-gray-500 fw-light">treasures</span>
               </h6>
             </div>
             <div className="col-auto" style={{ marginRight: "50px" }}>
               <img src={IconCities} alt="Icon Cities" width={32} height={32} />
               <h6 className="mt-3">
-                {FormatNumber(props.data.hero.cities)} &nbsp;
+                {FormatNumber(props.data.cities)} &nbsp;
                 <span className="text-gray-500 fw-light">cities</span>
               </h6>
             </div>

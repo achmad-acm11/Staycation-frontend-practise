@@ -10,14 +10,14 @@ export default function BookingInformation(props) {
           <div className="card">
             <figure className="img-wrapper">
               <img
-                src={ItemDetails.imageUrls[0].url}
+                src={`${process.env.REACT_APP_HOST}/${ItemDetails.imageId[0].imageUrl}`}
                 alt="Item 1"
                 className="img-cover"
               />
               <div className="row align-items-center">
                 <div className="col">
                   <div className="meta-wrapper">
-                    <h5 className="h4">{ItemDetails.name}</h5>
+                    <h5 className="h4">{ItemDetails.title}</h5>
                     <span className="text-gray-500">
                       {ItemDetails.city}, {ItemDetails.country}
                     </span>
@@ -26,7 +26,7 @@ export default function BookingInformation(props) {
                 <div className="col-auto">
                   ${+checkout.duration * ItemDetails.price} USD{" "}
                   <span className="text-gray-500">per</span> {checkout.duration}
-                  {+checkout.duration > 1 ? "night" : "nights"}
+                  {+checkout.duration > 1 ? " night" : " nights"}
                 </div>
               </div>
             </figure>

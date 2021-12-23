@@ -27,21 +27,21 @@ export default function InputText(props) {
         value: event.target.value,
       },
     };
-    // if (type === "email") {
-    //   if (!pattern.test(event.target.value)) {
-    //     setHasError("Email is Invalid");
-    //   } else {
-    //     setHasError(null);
-    //   }
-    // }
+    if (type === "email") {
+      if (!pattern.test(event.target.value)) {
+        setHasError("Email is Invalid");
+      } else {
+        setHasError(null);
+      }
+    }
 
-    // if (type === "tel") {
-    //   if (event.target.validity.valid) {
-    //     props.onChange(target);
-    //   } else {
-    //     props.onChange(target);
-    //   }
-    // }
+    if (type === "tel") {
+      if (event.target.validity.valid) {
+        props.onChange(target);
+      } else {
+        props.onChange(target);
+      }
+    }
     props.onChange(target);
   };
 

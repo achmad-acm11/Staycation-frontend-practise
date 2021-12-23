@@ -1,13 +1,13 @@
 import React from "react";
-// import parse from "html-react-parser";
+import parse from "html-react-parser";
 
 export default function PageDetailDescription({ data }) {
   return (
     <main>
       <h4>About the place</h4>
-      <p className="text-gray-500 fw-light"></p>
+      <p className="text-gray-500 fw-light">{parse(data.description)}</p>
       <div className="row" style={{ marginTop: 30 }}>
-        {data.features.map((item, index) => {
+        {data.featuredId.map((item, index) => {
           return (
             <div
               key={`${index}-${item._id}`}
@@ -15,7 +15,7 @@ export default function PageDetailDescription({ data }) {
               style={{ marginBottom: 20 }}
             >
               <img
-                src={item.imageUrl}
+                src={`${process.env.REACT_APP_HOST}/${item.imageUrl}`}
                 alt={item.name}
                 width={38}
                 className="d-block mb-2"

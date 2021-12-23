@@ -4,7 +4,6 @@ import "./index.scss";
 
 export default function InputFile(props) {
   const [FileName, setFileName] = useState("");
-
   const {
     placeholder,
     name,
@@ -14,18 +13,19 @@ export default function InputFile(props) {
     outerClassName,
     inputClassName,
   } = props;
-
+  
   const refInputFile = useRef(null);
 
   const onChange = (event) => {
     setFileName(event.target.value);
     props.onChange({
       target: {
-        nama: event.target.name,
+        name: event.target.name,
         value: event.target.files,
       },
     });
   };
+
   return (
     <div className={["input-file mb-3", outerClassName].join(" ")}>
       <div className="input-group">

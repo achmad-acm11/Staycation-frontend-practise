@@ -14,7 +14,7 @@ export default function Activities({ data }) {
               <div className="card">
                 <figure className="img-wrapper">
                   <img
-                    src={item.imageUrl}
+                    src={`${process.env.REACT_APP_HOST}/${item.imageUrl}`}
                     alt={`Activities ${index}`}
                     className="img-cover"
                   />
@@ -33,81 +33,6 @@ export default function Activities({ data }) {
             </div>
           );
         })}
-        {/* <div className="col-3">
-          <div className="card">
-            <div className="tag">
-              Popular &nbsp;
-              <span className="fw-light">Choice</span>
-            </div>
-            <figure className="img-wrapper">
-              <img
-                src="/images/img-featured-1.jpg"
-                alt="Activities 1"
-                className="img-cover"
-              />
-            </figure>
-            <div className="meta-wrapper">
-              <Button
-                type="link"
-                href=""
-                className="stretched-link d-block text-gray-800"
-              >
-                <h5 className="h4">Green Lake</h5>
-              </Button>
-              <span className="text-gray-500">Nature</span>
-            </div>
-          </div>
-        </div>
-        <div className="col-3">
-          <div className="card">
-            <div className="tag">
-              Popular &nbsp;
-              <span className="fw-light">Choice</span>
-            </div>
-            <figure className="img-wrapper">
-              <img
-                src="/images/img-featured-1.jpg"
-                alt="Activities 1"
-                className="img-cover"
-              />
-            </figure>
-            <div className="meta-wrapper">
-              <Button
-                type="link"
-                href=""
-                className="stretched-link d-block text-gray-800"
-              >
-                <h5 className="h4">Green Lake</h5>
-              </Button>
-              <span className="text-gray-500">Nature</span>
-            </div>
-          </div>
-        </div>
-        <div className="col-3">
-          <div className="card">
-            <div className="tag">
-              Popular &nbsp;
-              <span className="fw-light">Choice</span>
-            </div>
-            <figure className="img-wrapper">
-              <img
-                src="/images/img-featured-1.jpg"
-                alt="Activities 1"
-                className="img-cover"
-              />
-            </figure>
-            <div className="meta-wrapper">
-              <Button
-                type="link"
-                href=""
-                className="stretched-link d-block text-gray-800"
-              >
-                <h5 className="h4">Green Lake</h5>
-              </Button>
-              <span className="text-gray-500">Nature</span>
-            </div>
-          </div>
-        </div> */}
       </div>
     </section>
   );

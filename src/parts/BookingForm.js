@@ -2,8 +2,9 @@ import React from "react";
 import Number from "elements/Form/InputNumber";
 import InputDate from "elements/Form/InputDate";
 import Button from "elements/Button";
+import { withRouter } from "react-router-dom";
 
-export default class BookingForm extends React.Component {
+class BookingForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -64,17 +65,18 @@ export default class BookingForm extends React.Component {
     }
   }
 
-  // startBooking = () => {
-  //   const { data } = this.state;
-  //   this.props.startBooking({
-  //     _id: this.props.itemDetail._id,
-  //     duration: data.duration,
-  //     date: {
-  //       startDate: data.date.startDate,
-  //       endDate: data.date.endDate,
-  //     },
-  //   });
-  // };
+  startBooking = () => {
+    const { data } = this.state;
+    this.props.startBooking({
+      _id: this.props.itemDetail._id,
+      duration: data.duration,
+      date: {
+        startDate: data.date.startDate,
+        endDate: data.date.endDate,
+      },
+    });
+    this.props.history.push("/checkout");
+  };
   render() {
     const { data } = this.state;
     const { itemDetail } = this.props;
@@ -110,10 +112,9 @@ export default class BookingForm extends React.Component {
         <div className="d-grid gap-2 mt-4">
           <Button
             className="btn"
-            type="link"
-            href="/checkout"
             hasShadow
             isPrimary
+            onClick={this.startBooking}
           >
             {" "}
             Continue to book{" "}
@@ -123,3 +124,5 @@ export default class BookingForm extends React.Component {
     );
   }
 }
+
+export default withRouter(BookingForm);

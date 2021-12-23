@@ -9,7 +9,7 @@ export default function PageDetailTitle(props) {
           <Breadcrumb data={props.breadcrumb} />
         </div>
         <div className="col-auto text-center">
-          <h1 className="h2">{props.data.name}</h1>
+          <h1 className="h2">{props.data.title}</h1>
           <span className="text-gray-400">{props.data.city}, {props.data.country}</span>
         </div>
         <div className="col"></div>

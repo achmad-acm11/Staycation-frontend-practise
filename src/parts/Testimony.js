@@ -9,7 +9,7 @@ export default function Testimony(props) {
         <div className="col-auto" style={{ marginRight: 60 }}>
           <div className="testimonial-hero">
             <img
-              src={props.data.imageUrl}
+              src={`${process.env.REACT_APP_HOST}/${props.data.imageUrl}`}
               alt="testimonial"
               className="position-absolute"
               style={{ margin: "30px 0 0 30px", zIndex: 1 }}

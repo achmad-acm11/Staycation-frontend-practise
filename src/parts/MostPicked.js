@@ -24,8 +24,8 @@ export default function MostPicked(props) {
                 </div>
                 <figure className="img-wrapper">
                   <img
-                    src={item.imageUrl}
-                    alt={item.name}
+                    src={`${process.env.REACT_APP_HOST}/${item.imageId[0].imageUrl}`}
+                    alt={item.title}
                     className="img-cover"
                   />
                 </figure>
@@ -35,7 +35,7 @@ export default function MostPicked(props) {
                     className="stretched-link d-block text-white"
                     href={`/properties/${item._id}`}
                   >
-                    <h5>{item.name}</h5>
+                    <h5>{item.title}</h5>
                   </Button>
                   <span>
                     {item.city}, {item.country}
@@ -45,86 +45,6 @@ export default function MostPicked(props) {
             </div>
           );
         })}
-        {/* <div className="item column-4 row-1">
-          <div className="card card-featured">
-            <div className="tag">
-              $22 <span className="fw-light">per night</span>
-            </div>
-            <figure className="img-wrapper">
-              <img src={ImageMostPicked2} alt="Item 2" className="img-cover" />
-            </figure>
-            <div className="meta-wrapper">
-              <Button
-                type="link"
-                className="stretched-link d-block text-white"
-                href="/properties"
-              >
-                <h5>Ocean Land</h5>
-              </Button>
-              <span>Bandung, Indonesia</span>
-            </div>
-          </div>
-        </div>
-        <div className="item column-4 row-1">
-          <div className="card card-featured">
-            <div className="tag">
-              $856 <span className="fw-light">per night</span>
-            </div>
-            <figure className="img-wrapper">
-              <img src={ImageMostPicked3} alt="Item 3" className="img-cover" />
-            </figure>
-            <div className="meta-wrapper">
-              <Button
-                type="link"
-                className="stretched-link d-block text-white"
-                href="/properties"
-              >
-                <h5>Stark House</h5>
-              </Button>
-              <span>Malang, Indonesia</span>
-            </div>
-          </div>
-        </div>
-        <div className="item column-4 row-1">
-          <div className="card card-featured">
-            <div className="tag">
-              $62 <span className="fw-light">per night</span>
-            </div>
-            <figure className="img-wrapper">
-              <img src={ImageMostPicked4} alt="Item 4" className="img-cover" />
-            </figure>
-            <div className="meta-wrapper">
-              <Button
-                type="link"
-                className="stretched-link d-block text-white"
-                href="/properties"
-              >
-                <h5>Vinna Vill</h5>
-              </Button>
-              <span>Malang, Indonesia</span>
-            </div>
-          </div>
-        </div>
-        <div className="item column-4 row-1">
-          <div className="card card-featured">
-            <div className="tag">
-              $72 <span className="fw-light">per night</span>
-            </div>
-            <figure className="img-wrapper">
-              <img src={ImageMostPicked5} alt="Item 5" className="img-cover" />
-            </figure>
-            <div className="meta-wrapper">
-              <Button
-                type="link"
-                className="stretched-link d-block text-white"
-                href="/properties"
-              >
-                <h5>Bobox</h5>
-              </Button>
-              <span>Medan, Indonesia</span>
-            </div>
-          </div>
-        </div> */}
       </div>
     </section>
   );
